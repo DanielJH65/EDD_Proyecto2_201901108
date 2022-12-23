@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Movie Cast</title>
+</head>
+
+<body class="bg-[#003B22]">
+
+    <!-- #Login -->
+    <section class="bg-[#003B22] min-h-screen flex items-center justify-center" id="login">
+        <!-- Contenedor de login -->
+        <div class="bg-[#8ABE5F] flex rounded-2xl shadow-lg max-w-4xl p-5 py-10">
+            <!-- formulario -->
+            <div class="sm:w-1/2 px-16 py-16">
+                <h2 class="font-bold text-4xl text-[#042137] py-6">Login</h2>
+                <p class="text-xl text-[#042137]">La mejor opción en peliculas</p>
+
+                <form class="flex flex-col gap-4" id="formLogin">
+                    <input class="p-5 mt-8 rounded-xl border" type="text" name="username" id="usernamelogin"
+                        placeholder="Username">
+                    <input class="p-5 rounded-xl border" type="password" name="password" id="passwordlogin"
+                        placeholder="Password">
+                    <table>
+                        <tr>
+                            <td><input class="p-2 rounded-xl border" type="checkbox" name="admin" id="adminlogin"
+                                    placeholder="Administrador"><label for="admin" class="text-lg text-gray-800">
+                                    Administrador</label></td>
+                        </tr>
+                    </table>
+                    <button class="bg-[#042137] rounded-xl text-gray-200 mb-10 py-4 hover:scale-110 duration-300"
+                        type="submit">Login</button>
+                </form>
+
+                <!--<div class="mt-10 grid grid-cols-3 items-center text-gray-800">
+                    <hr class="border-gray-800">
+                    <p class="text-center text-sm">OR</p>
+                    <hr class="border-gray-800">
+                </div>
+
+                <div class="mt-5 text-md flex justify-between items-center text-gray-800">
+                    <p>No tienes una cuenta?</p>
+                    <button
+                        class="py-2 px-5 bg-sky-900 border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200"
+                        id="registroLogin">Registrar</button>
+                </div>-->
+            </div>
+                <!-- imagen -->
+                <div class="sm:block hidden w-1/2">
+                    <img class="rounded-2xl min-h-full"
+                        src="https://img.freepik.com/vector-premium/cine-peliculas-dibujos-animados_18591-49016.jpg?w=2000"
+                        alt="Logo">
+                </div>
+            </div>
+    </section>
+    <!-- #endLogin -->
+
+    <!-- #Register -->
+    <section class="bg-gray-800 min-h-screen hidden items-center justify-center" id="signin">
+        <!-- Contenedor de login -->
+        <div class="bg-gray-400 flex rounded-2xl shadow-lg max-w-4xl p-5">
+            <!-- formulario -->
+            <div class="sm:w-1/2 px-16">
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Sing in</h2>
+
+                <form class="flex flex-col gap-4" id="formSignin">
+                    <input class="p-5 mt-2 rounded-xl border" type="text" name="username" id="usernamesignin"
+                        placeholder="Username" required>
+                    <input class="p-5 mt-2 rounded-xl border" type="text" name="name" id="namesignin"
+                        placeholder="Nombre Completo" required>
+                    <input class="p-5 mt-2 rounded-xl border" type="text" name="dpi" id="dpisignin" placeholder="DPI"
+                        required>
+                    <input class="p-5 mt-2 rounded-xl border" type="text" name="tel" id="telsignin"
+                        placeholder="Teléfono" required>
+                    <input class="p-5 mt-2 rounded-xl border" type="password" name="password" id="passwordsignin"
+                        placeholder="Password" required>
+
+                    <button class="bg-sky-900 rounded-xl text-gray-200 py-4 hover:scale-110 duration-300"
+                        type="submit">Sign in</button>
+                </form>
+                <div class="mt-5 text-md flex justify-between items-center text-gray-800">
+                    <button
+                        class="py-2 px-5 bg-sky-900 border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200"
+                        id="loginSignin">Volver al Log in</button>
+                </div>
+            </div>
+            <!-- imagen -->
+            <div class="sm:block hidden w-1/2">
+                <img class="rounded-2xl"
+                    src="http://getwallpapers.com/wallpaper/full/0/2/f/1116367-music-notes-background-1354x2342-for-pc.jpg"
+                    alt="Logo">
+            </div>
+        </div>
+    </section>
+    <!-- #endRegister -->
+
+    <!-- #Admin -->
+    <section class="hidden" id="admin">
+        <!-- #Navbar Admin -->
+        <nav class="p-6 bg-[#499273] shadow md:flex md:items-center ms:justify-between">
+            <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold py-5 cursosr-pointer">
+                    <img src="https://i.pinimg.com/originals/d7/4e/12/d74e12c72108a089b38841b5ff724721.png"
+                        class="h-20 inline">
+                    Movie Cast
+                </span>
+
+                <span class="text-4xl cursor-pointer mx-3 md:hidden block">
+                    <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+                </span>
+
+            </div>
+            <ul class="text-[#042137] md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-[#499273] w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity:0 top-[-400px] transition-all ease-in duration-300"
+                id="navAdmin">
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-5xl hover:text-slate-100 duration-300" id="clientesAdmin">Clientes</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-5xl hover:text-slate-100 scale-110 duration-300" id="peliculasAdmin">Peliculas</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-5xl hover:text-slate-100 scale-110 duration-300" id="artistasAdmin">Artistas</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-5xl hover:text-slate-100 scale-110 duration-300" id="categoriasAdmin">Categorias</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-5xl hover:text-slate-100 scale-110 duration-300" id="linkBlockAdmin">Blockchain</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-5xl hover:text-slate-100 scale-110 duration-300" id="logOutAdmin">Log Out</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- #endNavbarAdmin -->
+        <!-- #adminContent -->
+        <section class="bg-[#003B22] flex items-center justify-center py-6">
+            <div class="bg-[#8ABE5F] flex rounded-2xl shadow-lg w-3/4 p-15">
+                <!-- Botones -->
+                <div class="sm:w-1/3 px-5">
+                    <h2 class="mt-8 font-bold text-2xl text-center text-gray-800 py-6">Gráficas</h2>
+
+                    <div class="mt-5 text-xl flex flex-col gap-4 text-gray-800">
+                        <button
+                            class="py-6 px-5 bg-[#042137] border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200"
+                            id="usersAdminGraph">Clientes</button>
+                        <button
+                            class="py-6 px-5 bg-[#042137] border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200"
+                            id="cancionesAdminGraph">Peliculas</button>
+                        <button
+                            class="py-6 px-5 bg-[#042137] border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200"
+                            id="programadasAdminGraph">Artistas</button>
+                        <button
+                            class="py-6 px-5 bg-[#042137] border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200"
+                            id="podcastAdminGraph">Categorias</button>
+                        <button
+                            class="py-6 px-5 bg-[#042137] border-gray-800 rounded-xl hover:scale-110 duration-300 text-gray-200"
+                            id="descargarAdminGraph">Descargar</button>
+                    </div>
+                </div>
+                <!-- imagen -->
+                <div class="sm:block hidden w-2/3" id="graficaAdmin">
+                    <img class="rounded-2xl min-w-full min-h-full"
+                        src="https://i.pinimg.com/originals/d7/4e/12/d74e12c72108a089b38841b5ff724721.png"
+                        id="imgAdmin" alt="Gráfica">
+                </div>
+            </div>
+        </section>
+        <!-- #endadminContent -->
+    </section>
+    <!-- #endAdmin -->
+
+    <!-- #Usuario -->
+    <section class="hidden" id="user">
+        <!-- #Navbar User -->
+        <nav class="p-12 bg-gray-400 shadow md:flex md:items-center ms:justify-between">
+            <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold py-5 cursosr-pointer">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Yandex_Music_icon.svg/2048px-Yandex_Music_icon.svg.png"
+                        class="h-20 inline">
+                    Muster Cloud
+                </span>
+
+                <span class="text-4xl cursor-pointer mx-3 md:hidden block">
+                    <ion-icon name="menu" onclick="Menu(this)"></ion-icon>
+                </span>
+
+            </div>
+            <ul class="text-gray-800 md:flex md:items-center z-[-1] md:z-auto md:static absolute bg-gray-400 w-full left-0 md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity:0 top-[-400px] transition-all ease-in duration-300"
+                id="navAdmin">
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="musicaUser">Musica</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="playlistUser">Playlist</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="artistasUser">Artistas</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="amigosUser">Amigos</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="bloqueadosUser">Bloqueados</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="podcastUser">Podcast</a>
+                </li>
+                <li class="mx-5 my-6 md:my-0">
+                    <a href="#" class="text-3xl hover:text-slate-100 duration-300" id="logOutUser">Log Out</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- #endNavbarUser -->
+
+        <!-- #UserContent -->
+        <section class="bg-gray-800 flex items-center justify-center py-6">
+
+            <!-- #UserMusicContent -->
+            <div class="bg-gray-400 hidden flex-col items-center justify-center px-12" id="musicContent">
+                <h2 class="font-bold text-2xl text-gray-900 py-6 my-5">Canciones Cargadas</h2>
+                <!-- #MusicList -->
+                <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl"
+                    id="usersMusicActual">
+                    <span class="text-3xl py-3">Reproductor de Música</span>
+                    <button class="bg-purple-400 rounded-3xl py-3 w-full" id="agregarPlaylistMusic" name="-1">Agregar a
+                        la playlist</button>
+                    <img class="rounded-2xl w-72 h-72"
+                        src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+                        alt="Fondo Reproductor">
+                    <span class="text-xl py-3" id="nombreCancionMusic">Nombre de la Cancion</span>
+                    <span class="text-xl py-3" id="artistaCancionMusic">Artista</span>
+                    <input type="range" min="0" max="100" step="0.01" class="p-2 my-2"
+                        style="background-color: #f3f4f6;">
+                    <div class="grid grid-cols-3 gap-6 p-0 m-0">
+                        <span class="text-4xl cursor-pointer" id="anteriorCancionMusic"><ion-icon
+                                name="play-back-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer"><ion-icon name="play-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer" id="nextCancionMusic"><ion-icon
+                                name="play-forward-circle-outline"></ion-icon></span>
+                    </div>
+                </div>
+                <!-- #endMusicList -->
+                <h2 class="font-bold text-2xl text-gray-900 py-6 my-5">Canciones Programadas</h2>
+                <!-- #MusicCalendar -->
+                <div class="grid grid-cols-4 gap-6">
+                    <div class="my-12 flex items-center justify-center">
+                        <input type="date" class="py-6 px-3 border rounded-2xl w-full" id="fechaProgramadaMusicCalendar"
+                            min="2022-01-01" max="2022-12-31">
+                    </div>
+                    <div class="col-span-2">
+                        <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl"
+                            id="usersMusicCalendar">
+                            <span class="text-3xl py-3">Reproductor de Música</span>
+                            <img class="rounded-2xl w-72 h-72"
+                                src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+                                alt="Fondo Reproductor">
+                            <span class="text-xl py-3" id="nombreCancionMusicCalendar">Nombre de la Cancion</span>
+                            <span class="text-xl py-3" id="artistaCancionMusicCalendar">Artista</span>
+                            <input type="range" min="0" max="100" step="0.01" class="p-2 my-2"
+                                style="background-color: #f3f4f6;">
+                            <div class="grid grid-cols-3 gap-6 p-0 m-0">
+                                <span class="text-4xl cursor-pointer" id="anteriorCancionMusicCalendar"><ion-icon
+                                        name="play-back-circle-outline"></ion-icon></span>
+                                <span class="text-4xl cursor-pointer"><ion-icon
+                                        name="play-circle-outline"></ion-icon></span>
+                                <span class="text-4xl cursor-pointer" id="nextCancionMusicCalendar"><ion-icon
+                                        name="play-forward-circle-outline"></ion-icon></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="my-12 flex flex-col justify-center text-gray-800">
+                        <span class="text-bold text-3xl">Detalles</span>
+                        <span class="text-2xl" id="nombreCancionMusicCalendar2">Nombre</span>
+                        <span class="text-2xl" id="artistaCancionMusicCalendar2">Artista</span>
+                        <span class="text-2xl" id="lanzamientoCancionMusicCalendar2">Lanzamiento</span>
+                    </div>
+                </div>
+                <!-- #endMusicCalendar -->
+                <h2 class="font-bold text-2xl text-gray-900 py-6 my-5">Publicar Cancion Nueva</h2>
+                <button class="bg-purple-800 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl"
+                    id="publicaCancionMusic">Publicar</button>
+            </div>
+            <!-- #endUserMusicContent -->
+
+            <!-- #UserPLaylistContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="playlistContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Playlist</h2>
+                <!-- #PlaylistList -->
+                <div class="bg-stone-800 flex flex-col items-center justify-center text-gray-100 mx-12 px-7 my-5 rounded-3xl"
+                    id="usersPLaylistActual">
+                    <span class="text-3xl py-3">Reproductor de Música</span>
+                    <img class="rounded-2xl w-72 h-72"
+                        src="https://img.freepik.com/vector-gratis/poster-portada-album-altavoces-musica_1017-26877.jpg"
+                        alt="Fondo Reproductor">
+                    <span class="text-xl py-3" id="nombreCancionPlaylist">Nombre de la Cancion</span>
+                    <span class="text-xl py-3" id="artistaCancionPlaylist">Artista</span>
+                    <input type="range" min="0" max="100" step="0.01" class="p-2 my-2"
+                        style="background-color: #f3f4f6;">
+                    <div class="grid grid-cols-3 gap-6 p-0 m-0">
+                        <span class="text-4xl cursor-pointer" id="anteriorCancionPlaylist"><ion-icon
+                                name="play-back-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer"><ion-icon name="play-circle-outline"></ion-icon></span>
+                        <span class="text-4xl cursor-pointer" id="nextCancionPlaylist"><ion-icon
+                                name="play-forward-circle-outline"></ion-icon></span>
+                    </div>
+                </div>
+                <!-- #endPlaylistList -->
+                <!-- #GraficaPlaylist -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica de Playlist</h2>
+                <div class="mx-5 my-5" id="graficaPlaylistUser"></div>
+                <!-- #endGraficaPLaylist -->
+
+            </div>
+            <!-- #endUserPLaylistContent -->
+
+            <!-- #UserArtistasContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="artistasContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Canciones por Artista</h2>
+                <!-- #UsersList -->
+                <div class="grid grid-cols-6 gap-4" id="artistasCancionesListArtistas"></div>
+                <!-- #endUsersList -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Listado de artistas</h2>
+                <!-- #FriendsList -->
+                <div class="grid grid-cols-8 gap-4" id="artistasListArtistas"></div>
+                <div class="grid grid-cols-2 gap-6">
+                    <button class="bg-orange-800 text-slate-100 text-4xl w-full py-5 my-5 mx-5 rounded-3xl"
+                        id="ordenarArtistasAscendente">Ascendete</button>
+                    <button class="bg-lime-800 text-slate-100 text-4xl w-full py-5 my-5 mx-5 rounded-3xl"
+                        id="ordenarArtistasDescendente">Descendente</button>
+                </div>
+                <!-- #endFriendsList -->
+                <!-- #GraficaAmigos -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Lista de listas</h2>
+                <div id="graficaArtistasUser" class="mx-5 my-5"></div>
+                <!-- #endGraficaAmigos -->
+
+            </div>
+            <!-- #endUserPlaylistContent -->
+
+            <!-- #UserFriendsContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="friendsContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Usuarios</h2>
+                <!-- #UsersList -->
+                <div class="grid grid-cols-8 gap-4" id="usersListFriends"></div>
+                <!-- #endUsersList -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Amigos</h2>
+                <!-- #FriendsList -->
+                <div class="grid grid-cols-8 gap-4" id="friendsListFriends"></div>
+                <button class="bg-red-700 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl"
+                    id="eliminarAmigoFriends">Eliminar</button>
+                <!-- #endFriendsList -->
+                <!-- #GraficaAmigos -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica Pila de amigos</h2>
+                <div id="graficaAmigos" class="mx-5 my-5"></div>
+                <!-- #endGraficaAmigos -->
+
+            </div>
+            <!-- #endUserFriendsContent -->
+
+            <!-- #UserBloqueadosContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="bloqueadosContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Bloqueados</h2>
+                <!-- #BloqueadosList -->
+                <div class="grid grid-cols-8 gap-4" id="bloqueadosListBloqueados"></div>
+                <button class="bg-green-700 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl"
+                    id="desbloquearUserFriends">Desbloquear</button>
+                <!-- #endBloqueadosList -->
+                <!-- #GraficaBloqueados -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Grafica Cola de bloqueados</h2>
+                <div id="graficaBloqueados" class="mx-5 my-5"></div>
+                <!-- #endGraficaBloqueados -->
+
+            </div>
+            <!-- #endUserBloqueadosContent -->
+
+            <!-- #UserPodcastContent -->
+            <div class="bg-gray-400 hidden items-center justify-center" id="podcastContent">
+                <h2 class="font-bold text-2xl text-gray-800 py-6 my-5">Podcasts</h2>
+                <!-- #PodcastList -->
+                <div class="grid grid-cols-6 gap-4" id="podcastListUser"></div>
+                <!-- #endPodcastList -->
+                <!-- #FormPodcastList -->
+                <div class="flex flex-col px-12">
+                    <button class="bg-purple-800 text-slate-100 text-4xl w-full py-5 my-5 rounded-3xl"
+                        id="publicarPodcastPodcasts">Publicar Podcast</button>
+                </div>
+                <!-- #endFormPodcastList -->
+                <!-- #GraficaPodcast -->
+                <h2 class="font-bold text-2xl text-gray-800 py-6">Grafica de Podcasts</h2>
+                <div class="mx-5 my-5" id="graficaPodcastsUser"></div>
+                <!-- #endGraficaPodcast -->
+
+            </div>
+            <!-- #endUserPodcastContent -->
+
+        </section>
+        <!-- #end UserContent -->
+    </section>
+    <!-- #endUsuario -->
+
+    <!-- #Scripts -->
+    <script src="./static/scripts/main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.15/dist/sweetalert2.all.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script>
+        function Menu(e) {
+
+            let list = document.getElementById("navAdmin")
+
+            e.name === 'menu' ? (e.name = "close", list.classList.add('top-[137px]'), list.classList.add('opacity-100')) : (e.name = "menu", list.classList.remove('top-[137px]'), list.classList.remove('opacity-100'))
+        }
+    </script>
+    <script src="//d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/@hpcc-js/wasm@0.3.11/dist/index.min.js"></script>
+    <script src="https://unpkg.com/d3-graphviz@3.0.5/build/d3-graphviz.js"></script>
+    <!-- #EndScripts -->
+</body>
+
+</html>
