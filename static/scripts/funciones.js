@@ -1,6 +1,7 @@
 import { ArbolBB } from './arbolBB.js'
+import { ArbolAVL } from './arbolAVL.js'
 import { ListaSimple } from './listaSimple.js'
-import { Usuario } from './objetos.js'
+import { Actor, Pelicula, Usuario } from './objetos.js'
 import $ from './query.js'
 import './js-sha256.js'
 
@@ -46,7 +47,8 @@ export function hideUser() {
 // Estructuras
 
 const usuarios = new ListaSimple()
-const artistas = new ArbolBB()
+const actores = new ArbolBB()
+const peliculas = new ArbolAVL()
 //const categorias = new ListaListas()
 
 let usuarioActual
@@ -82,9 +84,10 @@ export function login(e) {
 }
 
 // Admin
+
 export function ingresarUsuarios() {
     Swal.fire({
-        title: 'Carga masiva de usuarios',
+        title: 'Carga masiva de clientes',
         html: `<input type="file" id="fileUser" class="swal2-input">`,
         confirmButtonText: 'Cargar',
         focusConfirm: false,
@@ -107,7 +110,57 @@ export function ingresarUsuarios() {
     })
 }
 
-    //Graficas Admin
+export function ingresarPeliculas() {
+    Swal.fire({
+        title: 'Carga masiva de peliculas',
+        html: `<input type="file" id="fileMovies" class="swal2-input">`,
+        confirmButtonText: 'Cargar',
+        focusConfirm: false,
+        preConfirm: () => {
+            const fileuser = Swal.getPopup().querySelector('#fileMovies').files[0]
+            return fileuser
+        }
+    }).then((result) => {
+        const reader = new FileReader()
+
+        reader.addEventListener("load", () => {
+            let datos = JSON.parse(reader.result)
+            datos.forEach(user => {
+                peliculas.insertar(new Pelicula(user.id_pelicula, user.nombre_pelicula, user.descripcion, user.puntuacion_star, user.precion_Q, user.paginas, user.categoria))
+            });
+            Swal.fire("Registrados...", 'Carga masiva realizada', 'success')
+        })
+
+        reader.readAsText(result.value)
+    })
+}
+
+export function ingresarActores() {
+    Swal.fire({
+        title: 'Carga masiva de actores',
+        html: `<input type="file" id="fileActores" class="swal2-input">`,
+        confirmButtonText: 'Cargar',
+        focusConfirm: false,
+        preConfirm: () => {
+            const fileuser = Swal.getPopup().querySelector('#fileActores').files[0]
+            return fileuser
+        }
+    }).then((result) => {
+        const reader = new FileReader()
+
+        reader.addEventListener("load", () => {
+            let datos = JSON.parse(reader.result)
+            datos.forEach(user => {
+                actores.insertar(new Actor(user.dni, user.nombre_actor, user.correo, user.descripcion))
+            });
+            Swal.fire("Registrados...", 'Carga masiva realizada', 'success')
+        })
+
+        reader.readAsText(result.value)
+    })
+}
+
+//Graficas Admin
 
 export function graficarUsuarios() {
     let dot = "digraph G {\n"
@@ -115,6 +168,38 @@ export function graficarUsuarios() {
     dot += usuarios.graficarUser()
     dot += usuarios.graficarConexionesUser()
     dot += "rankdir= LR;\n}\n"
+
+    if (document.getElementById("imgAdmin")) {
+        document.getElementById("imgAdmin").remove()
+    }
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
+    }
+
+    d3.select("#graficaAdmin").graphviz().width(750).height(750).renderDot(dot)
+}
+
+export function graficarActores() {
+    let dot = "digraph G {\n"
+    dot += "node[shape=record, style=\"filled\", fillcolor=\"gray\"];\n"
+    dot += actores.graficar()
+    dot += "}\n"
+
+    if (document.getElementById("imgAdmin")) {
+        document.getElementById("imgAdmin").remove()
+    }
+    if (document.querySelector("svg")) {
+        document.querySelector("svg").setAttribute("class", "hidden")
+    }
+
+    d3.select("#graficaAdmin").graphviz().width(750).height(750).renderDot(dot)
+}
+
+export function graficarPeliculas() {
+    let dot = "digraph G {\n"
+    dot += "node[shape=record, style=\"filled\", fillcolor=\"gray\"];\n"
+    dot += peliculas.graficar()
+    dot += "}\n"
 
     if (document.getElementById("imgAdmin")) {
         document.getElementById("imgAdmin").remove()

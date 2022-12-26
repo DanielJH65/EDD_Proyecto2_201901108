@@ -1,3 +1,24 @@
+export class Actor{
+    constructor(_dni, _nombre_actor, _correo, _descripcion){
+        this.dni = _dni
+        this.name = _nombre_actor
+        this.mail = _correo
+        this.description = _descripcion
+    }
+}
+
+export class Pelicula{
+    constructor(_id, _nombre, _descripcion, _star, _precio, _paginas, _categoria){
+        this.id = _id
+        this.name = _nombre
+        this.description = _descripcion
+        this.stars = _star
+        this.price = _precio
+        this.pages = _paginas
+        this.category = _categoria
+    }
+}
+
 export class Usuario{
     constructor(_dpi, _nombre_completo, _nombre_usuario, _correo, _contra, _telefono, _admin){
         this.admin = _admin

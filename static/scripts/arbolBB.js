@@ -11,9 +11,9 @@ export class ArbolBB{
     insertarRecursivo(_root, _dato){
         if(_root == null){
             _root = new NodoArbolBB(_dato)
-        }else if(_root.dato.name == _dato.name){
+        }else if(_root.dato.dni == _dato.dni){
             _root.dato = _dato
-        }else if(_root.dato.name < _dato.name){
+        }else if(_root.dato.dni < _dato.dni){
             _root.right = this.insertarRecursivo(_root.right, _dato)
         }else{
             _root.left = this.insertarRecursivo(_root.left, _dato)
@@ -28,14 +28,14 @@ export class ArbolBB{
     graficarRecursivo(_root){
         let dot = ""
         if(_root != null){
-            dot+=`Nodo${_root.dato.name.replaceAll(' ','')}[label = "<C0>|${_root.dato.name}|<C1>"];\n`
+            dot+=`Nodo${_root.dato.dni}[label = "<C0>|${_root.dato.dni}\\n${_root.dato.name}|<C1>"];\n`
             if(_root.left != null){
                 dot += this.graficarRecursivo(_root.left)
-                dot += `Nodo${_root.dato.name.replaceAll(' ','')}:C0 -> Nodo${_root.left.dato.name.replaceAll(' ','')}\n`
+                dot += `Nodo${_root.dato.dni}:C0 -> Nodo${_root.left.dato.dni}\n`
             }
             if(_root.right != null){
                 dot += this.graficarRecursivo(_root.right)
-                dot += `Nodo${_root.dato.name.replaceAll(' ','')}:C1 -> Nodo${_root.right.dato.name.replaceAll(' ','')}\n`
+                dot += `Nodo${_root.dato.dni}:C1 -> Nodo${_root.right.dato.dni}\n`
             }
         }
         return dot
