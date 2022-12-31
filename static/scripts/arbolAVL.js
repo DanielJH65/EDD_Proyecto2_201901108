@@ -102,4 +102,12 @@ export class ArbolAVL {
         }
         return dot
     }
+
+    mosrtrar(){
+        this.mostrarRecursivo(this.root)
+    }
+
+    mostrarRecursivo(_root){
+        
+    }
 }

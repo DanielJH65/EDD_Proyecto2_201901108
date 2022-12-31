@@ -7,6 +7,13 @@ export class Actor{
     }
 }
 
+export class Categoria{
+    constructor(_id, _company){
+        this.id = _id
+        this.company = _company
+    }
+}
+
 export class Pelicula{
     constructor(_id, _nombre, _descripcion, _star, _precio, _paginas, _categoria){
         this.id = _id
