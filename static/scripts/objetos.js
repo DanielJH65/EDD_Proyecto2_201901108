@@ -1,3 +1,5 @@
+import { ListaSimple } from "./listaSimple.js"
+
 export class Actor{
     constructor(_dni, _nombre_actor, _correo, _descripcion){
         this.dni = _dni
@@ -7,10 +9,29 @@ export class Actor{
     }
 }
 
+export class Bloque{
+    constructor(_index, _fecha, _dato, _nonce, _hashPrev, _merkle, _hash){
+        this.index = _index
+        this.date = _fecha
+        this.transactions = _dato
+        this.nonce = _nonce
+        this.hashPrev = _hashPrev
+        this.merkle = _merkle
+        this.hash = _hash
+    }
+}
+
 export class Categoria{
     constructor(_id, _company){
         this.id = _id
         this.company = _company
+    }
+}
+
+export class Comentario{
+    constructor(_username, _comentario){
+        this.username = _username
+        this.comentario = _comentario
     }
 }
 
@@ -23,6 +44,14 @@ export class Pelicula{
         this.price = _precio
         this.pages = _paginas
         this.category = _categoria
+        this.comentarios = new ListaSimple()
+    }
+}
+
+export class PeliculaAlquilada{
+    constructor(_movie, _user){
+        this.movie = _movie
+        this.username = _user 
     }
 }
 

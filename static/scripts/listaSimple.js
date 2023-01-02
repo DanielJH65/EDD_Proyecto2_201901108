@@ -32,6 +32,20 @@ export class ListaSimple{
         }
         return true
     }
+    
+    insertarFinal2(_dato){
+        let newNodo = new NodoSimple(_dato)
+        let tmp = this.first
+        
+        if(this.first == null){
+            this.first = newNodo
+        }else{
+            while(tmp.next != null){
+                tmp = tmp.next
+            }
+            tmp.next = newNodo
+        }
+    }
 
     imprimir(){
         let tmp = this.first
@@ -103,4 +117,7 @@ export class ListaSimple{
         }
     }
 
+    limpiar(){
+        this.first = null
+    }
 }

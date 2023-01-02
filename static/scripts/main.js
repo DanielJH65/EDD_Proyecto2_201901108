@@ -9,10 +9,14 @@ formLogin.addEventListener("submit", (e)=>{funciones.login(e)})
 // Admin
 
 const logOutAdmin = $('#logOutAdmin')
+const inicioAdmin = $('#inicioAdmin')
 const clientesAdmin = $('#clientesAdmin')
 const actoresAdmin = $('#actoresAdmin')
 const peliculasAdmin = $('#peliculasAdmin')
 const categoriasAdmin = $('#categoriasAdmin')
+const blockChainAdmin = $('#blockChainAdmin')
+const modificarTiempo = $('#modificarTiempo')
+const generarBloque = $('#generarBloque')
 
 const usuariosAdminGraph = $('#usersAdminGraph')
 const actoresAdminGraph = $('#actoresAdminGraph')
@@ -22,10 +26,15 @@ const descargarAdminGraph = $('#descargarAdminGraph')
 
 logOutAdmin.addEventListener("click", ()=>{funciones.hideAdmin();funciones.showLogin()})
 
+inicioAdmin.addEventListener("click", ()=>{funciones.showInicioAdmin();funciones.hideBlockchainAdmin()})
 clientesAdmin.addEventListener("click", ()=>{funciones.ingresarUsuarios()})
 actoresAdmin.addEventListener("click", ()=>{funciones.ingresarActores()})
 peliculasAdmin.addEventListener("click", ()=>{funciones.ingresarPeliculas()})
 categoriasAdmin.addEventListener("click", ()=>{funciones.ingresarCategorias()})
+blockChainAdmin.addEventListener("click", ()=>{funciones.showBlockchainAdmin(); funciones.hideInicioAdmin()})
+modificarTiempo.addEventListener("click", ()=>{funciones.modificarIntervalo()})
+
+generarBloque.addEventListener("click", ()=>{funciones.nuevoBloqueBlockChain()})
 
 usuariosAdminGraph.addEventListener("click", ()=>{funciones.graficarUsuarios()})
 actoresAdminGraph.addEventListener("click", ()=>{funciones.graficarActores()})

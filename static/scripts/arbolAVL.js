@@ -103,11 +103,33 @@ export class ArbolAVL {
         return dot
     }
 
-    mosrtrar(){
-        this.mostrarRecursivo(this.root)
+    obtener(_id, _root){
+        if(_root != null){
+            if(_id == _root.dato.id){
+                return _root
+            }else if(_id < _root.dato.id){
+                return this.obtener(_id, _root.left)
+            }else{
+                return this.obtener(_id, _root.right)
+            }
+        }
+        return null
     }
 
-    mostrarRecursivo(_root){
-        
+    modificarStars(_id, _stars){
+        this.root = this.modificarStars2(_id, _stars, this.root)
+    }
+
+    modificarStars2(_id, _stars, _root){
+        if(_root != null){
+            if(_id == _root.dato.id){
+                _root.dato.stars = _stars
+            }else if(_id < _root.dato.id){
+                _root.left = this.modificarStars2(_id, _stars, _root.left)
+            }else if(_id > _root.dato.id){
+                _root.right = this.modificarStars2(_id, _stars, _root.right)
+            }
+            return _root
+        }
     }
 }
